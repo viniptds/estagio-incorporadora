@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helpers\ResponseHelper;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreAdmin;
 use App\Models\Admin;
+use App\Services\ResponseService;
+use App\Transformers\Admin\AdminResource;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -14,65 +18,78 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    public function index(){
+
+    private $admin;
+
+    public function __construct(Admin $admin)
+    {
+        $this->admin = $admin;
+    }
+
+    public function index()
+    {
         return view("admin.auth.login"); //->with("pass", Hash::make("teste123"));
     }
-    public function remember(){
+    public function remember()
+    {
         return view("admin.auth.remember");
     }
 
-    public function register(Request $request)
+    public function store(StoreAdmin $request)
     {
-
-        $validator = Validator::make($request->all(), [
-            "name"              => 'required|string',
-            "email"             => 'required|string',
-            "cpf"               => 'required|string|max:11',
-            "phone"             => 'required|string',
-            "password"          => 'required|string',
-        ], [
-            'name' => "nome",
-            'phone' => "celular",
-            'password' => "senha",
-        ]);
-
-        if ($validator->fails()) {
-            return ResponseHelper::error($validator->getMessageBag()->first(), 500);
-        } else {
-
-            $user = Admin::create([
-                'name' => $request->input('name'),
-                'email' => $request->input('email'),
-                'cpf' => $request->input('cpf'),
-                'phone' => substr($request->input('phone'), 0, 11),
-                'password' => Hash::make($request->input('password')),
-                'status' => 1,
-
-            ]);
-
-            $user->save();
-
-
-            return ResponseHelper::success($user, __("Retornando usuário"));
+        try {
+            $admin = $this
+                ->admin
+                ->create([
+                    'name' => $request->get('name'),
+                    'email' => $request->get('email'),
+                    'password' => Hash::make($request->get('password')),
+                ]);
+        } catch (Exception $e) {
+            return ResponseService::exception('users.store', null, $e);
         }
+
+        return new AdminResource($admin, array('type' => 'store', 'route' => 'admin.auth.store'));
+
+            // return ResponseHelper::error($validator->getMessageBag()->first(), 500);
+            // $user = Admin::create([
+            //     'name' => $request->input('name'),
+            //     'email' => $request->input('email'),
+            //     'cpf' => $request->input('cpf'),
+            //     'phone' => substr($request->input('phone'), 0, 11),
+            //     'password' => Hash::make($request->input('password')),
+            //     'status' => 1,
+            // ]);
+            // $user->save();
+            // return ResponseHelper::success($user, __("Retornando usuário"));
     }
 
 
     public function login(Request $request)
     {
-        if (!Auth::guard("admin")->attempt($request->only(['email', 'password']))) {
-            // return ResponseHelper::error(__("Credenciais inválidas"), Response::HTTP_UNAUTHORIZED);
-            return redirect()->route("admin.auth")->with('error', __("Credenciais inválidas"));
+        $credentials = $request->only('email', 'password');
+        try {
+            $token = $this
+            ->admin
+            ->login($credentials);
+        } catch (Exception $e) {
+            return ResponseService::exception('admin.auth.login', null, $e);
         }
 
-        $user = Auth::user();
+        return response()->json(compact('token'));
+        // if (!Auth::guard("admin")->attempt($request->only(['email', 'password']))) {
+        //     // return ResponseHelper::error(__("Credenciais inválidas"), Response::HTTP_UNAUTHORIZED);
+        //     return redirect()->route("admin.auth")->with('error', __("Credenciais inválidas"));
+        // }
 
-        // $token = $user->createToken('token')->plainTextToken;
-        // $cookie = cookie("jwt", $token, 60 * 24); //1 dia
+        // $user = Auth::user();
 
-        // return ResponseHelper::success($user, __('Sucesso'));//->withCookie($cookie);
+        // // $token = $user->createToken('token')->plainTextToken;
+        // // $cookie = cookie("jwt", $token, 60 * 24); //1 dia
 
-        return redirect()->route("admin.home");
+        // // return ResponseHelper::success($user, __('Sucesso'));//->withCookie($cookie);
+
+        // return redirect()->route("admin.home");
     }
 
     public function user()
@@ -82,7 +99,7 @@ class AuthController extends Controller
 
     public function forgot(Request $request)
     {
-        if(Auth::user()) {
+        if (Auth::user()) {
             return ResponseHelper::error(__("Faça logout antes de realizar essa operação"), 403);
         }
 
@@ -129,16 +146,26 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        if(!Auth::check()) {
-            return ResponseHelper::error(__("Faça logout antes de realizar essa operação"), 403);
-        }
+        
+            try {
+                $this
+                ->admin
+                ->logout($request->input('token'));
+            } catch (Exception $e) {
+                return ResponseService::exception('admin.auth.logout',null,$e);
+            }
+    
+            return response(['status' => true,'msg' => 'Deslogado com sucesso'], 200);
+        // if (!Auth::check()) {
+        //     return ResponseHelper::error(__("Faça logout antes de realizar essa operação"), 403);
+        // }
 
-        // $cookie = Cookie::forget("jwt");
-        // return ResponseHelper::success([], __("Logout feito com sucesso")); //->withCookie($cookie);
+        // // $cookie = Cookie::forget("jwt");
+        // // return ResponseHelper::success([], __("Logout feito com sucesso")); //->withCookie($cookie);
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        // $request->session()->invalidate();
+        // $request->session()->regenerateToken();
 
-        return redirect()->route("admin.auth");
+        // return redirect()->route("admin.auth");
     }
 }

@@ -14,6 +14,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+
+// Admin
+Route::group([
+    'prefix' => "admin", 
+    'middleware' => [
+            'assign.guard:admin'
+        ]
+    ], function(){
+    // Auth related 
+    Route::prefix("auth")->group(function() {
+        Route::post("store", [\App\Http\Controllers\Admin\AuthController::class, "store"])->name("admin.auth.store");
+        Route::post("login", [\App\Http\Controllers\Admin\AuthController::class, "login"])->name("admin.auth.login");
+        // Route::get("/", [\App\Http\Controllers\Admin\AuthController::class, "index"])->name("admin.auth");
+    });
+
+    Route::middleware("jwt.verify")->group(function() {
+            Route::post("auth/logout", [\App\Http\Controllers\Admin\AuthController::class, "logout"])->name("admin.auth.logout");
+    });
 });
