@@ -190,7 +190,7 @@
                                             <tr>
                                                 <td>{{ $corretor->id }}</td>
                                                 <td>{{ $corretor->name }}</td>
-                                                <td>{{ $corretor->cpf }}</td>
+                                                <td>{{ $corretor->documento }}</td>
                                                 <td>{{ $corretor->phone }}</td>
                                                 <td>{{ $corretor->vendas()->count() }}</td>
                                                 <td>

@@ -31,7 +31,7 @@
                                     <div class="col-lg-6 col-sm-12">
                                         <div class="form-group">
                                             <label for="cpf">CPF: *</label>
-                                            <input type="text" class="cpf form-control" id="cpf" name="cpf" value="{{$corretor->cpf}}" required>
+                                            <input type="text" class="cpf form-control" id="cpf" name="cpf" value="{{$corretor->documento}}" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-sm-12">

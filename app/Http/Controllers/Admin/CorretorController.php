@@ -65,7 +65,7 @@ class CorretorController extends Controller
 
         $profilePicture = $request->file("profile_picture");
 
-        $corretorSearch = Corretor::where("cpf", $data['cpf'])
+        $corretorSearch = Corretor::where("documento", $data['cpf'])
             ->where("imobiliaria_id", "!=", $imobiliaria_id ? $imobiliaria_id : null)
             ->first();
 
@@ -82,7 +82,7 @@ class CorretorController extends Controller
             $corretor = new Corretor();
 
             $corretor->name = $data['name'];
-            $corretor->cpf = $data['cpf'];
+            $corretor->documento = $data['cpf'];
             $corretor->taxa_venda_porcentagem = $data['taxa_venda_porcentagem'] ?? 0;
             $corretor->taxa_venda_valor = $data['taxa_venda_valor'] ?? 0;
             $corretor->phone = $data['celular'];
@@ -171,7 +171,7 @@ class CorretorController extends Controller
         }
         else {
             $corretor->name = $data['name'];
-            $corretor->cpf = $data['cpf'];
+            $corretor->documento = $data['cpf'];
             $corretor->phone = $data['phone'];
             $corretor->email = $data['email'];
 

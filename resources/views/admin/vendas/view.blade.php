@@ -37,7 +37,7 @@
                                     <tr>
                                         <td>Vendedor:</td>
                                         <td>
-                                            <a href="{{route('admin.corretores.show', ['corretor' => $venda->corretor])}}">{{ "{$venda->corretor->name} - {$venda->corretor->cpf}" }}
+                                            <a href="{{route('admin.corretores.show', ['corretor' => $venda->corretor])}}">{{ "{$venda->corretor->name} - {$venda->corretor->documento}" }}
                                             </a>
                                         </td>
                                     </tr>

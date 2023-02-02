@@ -111,7 +111,7 @@
                                         Criado em: {{ date('d/m/Y', strtotime($corretor->created_at)) }}
                                     </small>
                                 </td>
-                                <td>{{ $corretor->cpf }}</td>
+                                <td>{{ $corretor->documento }}</td>
                                 <td>{{ $corretor->phone }}</td>
                                 <td><span class="badge alert-info">
                                     {{ $corretor->vendas()->count() }}

@@ -23,7 +23,7 @@
                                     </tr>
                                     <tr>
                                         <td>Documento</td>
-                                        <td>{{$corretor->cpf}}</td>
+                                        <td>{{$corretor->documento}}</td>
                                     </tr>
                                     <tr>
                                         <td>Email</td>
