@@ -103,7 +103,7 @@ class NewsletterController extends Controller
         if(empty($userSearch)){
             $user = new User();
 
-            $user->nome = $data['nome'];
+            $user->name = $data['name'];
             $user->email = $data['email'];
             $user->password = Hash::make(substr($data['email'], 0, 6));
             $user->status = User::STATUS_EMESPERA;

@@ -55,7 +55,7 @@ class LoteamentoController extends Controller
         ];
 
         // $request->validate([
-        //     'nome' => 'required',
+        //     'name' => 'required',
         //     'descricao'     => 'required',
         //     'link'     => 'required',
         //     'area'     => 'required'
@@ -65,13 +65,13 @@ class LoteamentoController extends Controller
 
         $data['link'] = trim(strtolower($data['link'] ?? ''));
 
-        if(empty($data['nome'])){
+        if(empty($data['name'])){
             $return['message'][] = 'Nome precisa ser enviado';
         } elseif(empty($data['descricao'])){
             $return['message'][] = 'Descrição precisa ser enviada';
         } elseif(empty($data['link'])){
             $return['message'][] = 'Link precisa ser enviado';
-        } elseif(($loteamento = Loteamento::where('link', $data['link'])->orWhere('nome', $data['nome'])->first())){
+        } elseif(($loteamento = Loteamento::where('link', $data['link'])->orWhere('name', $data['name'])->first())){
             $message = "Nome já cadastrado";
             if($loteamento->link == $data['link'])
                 $message = 'Link já cadastrado. Tente outros valores';
@@ -87,7 +87,7 @@ class LoteamentoController extends Controller
 
             $loteamento = new Loteamento();
 
-            $loteamento->nome = $data['nome'];
+            $loteamento->name = $data['name'];
             $loteamento->descricao = $data['descricao'];
             $loteamento->link = $data['link'];
             $loteamento->area = $data['area'];
@@ -146,7 +146,7 @@ class LoteamentoController extends Controller
         
         $data = $request->all();
 
-        if(empty($data['nome']))
+        if(empty($data['name']))
             $return['message'][] = "Nome precisa ser preenchido";
         elseif(empty($data['link']))
             $return['message'][] = "Link precisa ser preenchido";
@@ -155,7 +155,7 @@ class LoteamentoController extends Controller
         elseif(empty($data['area']))
             $return['message'][] = "Área precisa ser preenchida";
         else {
-            $loteamento->nome = $data['nome'];
+            $loteamento->name = $data['name'];
             $loteamento->link = $data['link'];
             $loteamento->area = $data['area'];
             $loteamento->save();

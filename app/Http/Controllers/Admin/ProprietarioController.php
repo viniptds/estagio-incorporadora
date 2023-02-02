@@ -39,7 +39,7 @@ class ProprietarioController extends Controller
     public function store(Lote $lote, Request $request){
         $request->validate([
             'documento'     => 'required',
-            'nome'          => 'required',
+            'name'          => 'required',
             'data_inicio'   => 'required'
             // 'data_fim'      => ''
         ]);
@@ -55,7 +55,7 @@ class ProprietarioController extends Controller
 
             $proprietario = new Proprietario();
             
-            $proprietario->nome = $data['nome'];
+            $proprietario->name = $data['name'];
             $proprietario->documento = $data['documento'];
             $proprietario->email = $data['email'];
             $proprietario->phone = $data['phone'];
@@ -160,7 +160,7 @@ class ProprietarioController extends Controller
 
         if(empty($data['documento'])){
             $return['message'][] = 'Documento não foi enviado';
-        } elseif(empty($data['nome'])){
+        } elseif(empty($data['name'])){
             $return['message'][] = 'Nome não foi enviado';
         } elseif(empty($data['data_inicio'])){
             $return['message'][] = 'Data de início não foi enviada';
@@ -199,7 +199,7 @@ class ProprietarioController extends Controller
 
             $proprietario = new Proprietario();
             
-            $proprietario->nome = $data['nome'];
+            $proprietario->name = $data['name'];
             $proprietario->documento = $data['documento'];
             $proprietario->email = $data['email'];
             $proprietario->phone = $data['phone'];

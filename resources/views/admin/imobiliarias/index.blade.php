@@ -49,7 +49,7 @@
                                             <div class="col col-6 col-xs-12">
                                                 <div class="form-group">
                                                     <label>Nome:</label>
-                                                    <input type="text" required name="nome"
+                                                    <input type="text" required name="name"
                                                         class="form-control">
                                                 </div>
                                             </div>
@@ -190,7 +190,7 @@
                                     </td>
                                     <td>
                                         <a>
-                                            {{$imobiliaria->nome}}
+                                            {{$imobiliaria->name}}
                                         </a>
                                         <br />
                                         <small>

@@ -53,7 +53,7 @@
                     <div class="card m-2">
                         <div class="card-header p-3 m-2">
                             <div class="row">
-                                <h3>Agendar visita em <b><a href="{{route("user.loteamentos.show", [ "loteamento" => $loteamento->id])}}">{{$loteamento->nome}}</a></b>
+                                <h3>Agendar visita em <b><a href="{{route("user.loteamentos.show", [ "loteamento" => $loteamento->id])}}">{{$loteamento->name}}</a></b>
                                 @if(isset($lote))
                                 - Lote {{ $lote->quadra()->descricao . " - " . $lote->id }}
                                 @endif</h3>

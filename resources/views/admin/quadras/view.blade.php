@@ -46,7 +46,7 @@
                                     </tr>
                                     <tr>
                                         <td>Loteamento:</td>
-                                        <td><a href="{{route("admin.loteamentos.show", [ 'loteamento' => $quadra->loteamento->id ])}}">{{ $quadra->loteamento->nome }}</a></td>
+                                        <td><a href="{{route("admin.loteamentos.show", [ 'loteamento' => $quadra->loteamento->id ])}}">{{ $quadra->loteamento->name }}</a></td>
                                     </tr>
                                     <tr>
                                         <td>Criada Em:</td>

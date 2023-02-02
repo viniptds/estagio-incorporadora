@@ -38,8 +38,8 @@
 
                                         <div class="form-group">
                                             <label>Nome:</label>
-                                            <input type="text" name="nome" class="form-control" value="{{session("
-                                                nome")}}" required>
+                                            <input type="text" name="name" class="form-control" value="{{session("
+                                                name")}}" required>
                                         </div>
                                         <div class="form-group">
                                             <label>CPF:</label>
@@ -105,7 +105,7 @@
                             @foreach ($corretores as $corretor)
                             <tr id="r-{{ $corretor->id }}">
                                 <td>
-                                    <a>{{ $corretor->nome }}</a>
+                                    <a>{{ $corretor->name }}</a>
                                     <br />
                                     <small>
                                         Criado em: {{ date('d/m/Y', strtotime($corretor->created_at)) }}

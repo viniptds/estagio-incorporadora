@@ -31,7 +31,7 @@ class ProfileController extends Controller
 
             $user->cpf = $request->get('cpf');
             $user->phone = $request->get('phone');
-            $user->nome = $request->get('nome');
+            $user->name = $request->get('name');
 
             $user->logradouro = $request->get('logradouro');
             $user->numero = $request->get('numero');

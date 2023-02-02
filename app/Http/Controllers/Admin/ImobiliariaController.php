@@ -48,7 +48,7 @@ class ImobiliariaController extends Controller
         ];
 
         $request->validate([
-            'nome' => 'required',
+            'name' => 'required',
             'razao_social'     => 'required',
             'cnpj'     => 'required',
             'creci'     => 'required',
@@ -75,7 +75,7 @@ class ImobiliariaController extends Controller
 
             $imobiliaria = new Imobiliaria();
 
-            $imobiliaria->nome = $data['nome'];
+            $imobiliaria->name = $data['name'];
             $imobiliaria->cnpj = $data['cnpj'];
             $imobiliaria->razao_social = $data['razao_social'];
             $imobiliaria->creci = $data['creci'];
@@ -140,7 +140,7 @@ class ImobiliariaController extends Controller
         
         $data = $request->all();
 
-        if(empty($data['nome'])) {
+        if(empty($data['name'])) {
             $return['message'][] = "Nome precisa ser preenchido";
         }
         if(empty($data['razao_social'])) {
@@ -178,7 +178,7 @@ class ImobiliariaController extends Controller
         }
         
         if(empty($return['message'])) {
-            $imobiliaria->nome = $data['nome'];
+            $imobiliaria->name = $data['name'];
             $imobiliaria->razao_social = $data['razao_social'];
             $imobiliaria->cnpj = $data['cnpj'];
             $imobiliaria->phone = $data['phone'];

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Loteamento
- * @param $nome
+ * @param $name
  * @param $descricao
  * @param $link
  * @param $area
@@ -64,7 +64,7 @@ class Loteamento extends Model
     }
 
     protected $fillable = [
-        'nome',
+        'name',
         'descricao',
         'link',
         'area',

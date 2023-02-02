@@ -24,7 +24,7 @@
                                     <table class="">
                                         <tr>
                                             <td>Nome:</td>
-                                            <td>{{ $imobiliaria->nome }}</td>
+                                            <td>{{ $imobiliaria->name }}</td>
                                         </tr>
                                         <tr>
                                             <td>Razão Social:</td>
@@ -138,7 +138,7 @@
                                     
                                         <div class="form-group">
                                             <label>Nome:</label>
-                                            <input type="text" name="nome" class="form-control" value="{{session("nome")}}" required>
+                                            <input type="text" name="name" class="form-control" value="{{session("name")}}" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Documento:</label>
@@ -189,7 +189,7 @@
                                         @foreach ($imobiliaria->corretores()->get() as $corretor)
                                             <tr>
                                                 <td>{{ $corretor->id }}</td>
-                                                <td>{{ $corretor->nome }}</td>
+                                                <td>{{ $corretor->name }}</td>
                                                 <td>{{ $corretor->cpf }}</td>
                                                 <td>{{ $corretor->phone }}</td>
                                                 <td>{{ $corretor->vendas()->count() }}</td>

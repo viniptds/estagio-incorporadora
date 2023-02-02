@@ -16,7 +16,7 @@ class CreateProprietariosTable extends Migration
         Schema::create('proprietarios', function (Blueprint $table) {
             $table->id();
 
-            $table->string("nome", 100);
+            $table->string("name", 100);
             $table->string("documento", 18);
             $table->string("email", 200);
             $table->string("phone", 18);

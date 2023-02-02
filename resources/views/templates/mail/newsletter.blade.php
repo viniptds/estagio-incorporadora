@@ -3,7 +3,7 @@
 @section('content')
 <div class="row mb-4">
     <div class="col-12 text-center">
-        <h3>Seja bem-vindo(a) <b>{{$user->nome}}</b>!</h3>
+        <h3>Seja bem-vindo(a) <b>{{$user->name}}</b>!</h3>
     </div>
 </div>
 

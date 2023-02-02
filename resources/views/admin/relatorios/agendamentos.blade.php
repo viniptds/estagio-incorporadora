@@ -41,7 +41,7 @@
 
                         <tr id="r-{{ $agendamento->id }}">
                             <td>
-                                {{ $agendamento->loteamento->nome }}
+                                {{ $agendamento->loteamento->name }}
                             </td>
                             <td>
                                 @if($agendamento->lote)
@@ -58,14 +58,14 @@
                             <td class="">
                                 @if($agendamento->corretor)
                                 {{ 
-                                // (!empty($agendamento->corretor->imobiliaria) ? $agendamento->corretor->imobiliaria->nome . " / " : "") . 
-                                $agendamento->corretor->nome }}
+                                // (!empty($agendamento->corretor->imobiliaria) ? $agendamento->corretor->imobiliaria->name . " / " : "") . 
+                                $agendamento->corretor->name }}
                                 @else
                                 -
                                 @endif
                             </td>
                             <td class="">
-                                {{ $agendamento->cliente->nome }}
+                                {{ $agendamento->cliente->name }}
                             </td>
                             <td class="text-center">
                                 {{ date("d/m/Y H:i:s", strtotime($agendamento->data_inicio)) }}                                

@@ -23,9 +23,9 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-lg-6 col-sm-12">
-                                        <label for="nome">Nome: *</label>
-                                        <input type="text" class="form-control" name="nome"
-                                            value="{{ Auth::user()->nome ?? '' }}" required>
+                                        <label for="name">Nome: *</label>
+                                        <input type="text" class="form-control" name="name"
+                                            value="{{ Auth::user()->name ?? '' }}" required>
                                     </div>
                                     <div class="col-lg-6 col-sm-12">
                                         <div class="form-group">

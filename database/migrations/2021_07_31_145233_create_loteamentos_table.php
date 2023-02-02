@@ -15,7 +15,7 @@ class CreateLoteamentosTable extends Migration
     {
         Schema::create('loteamentos', function (Blueprint $table) {
             $table->id();
-            $table->string("nome", 100);
+            $table->string("name", 100);
             $table->string("descricao", 200);
             $table->string("link", 50)->unique();
             $table->decimal("area", 11,2);

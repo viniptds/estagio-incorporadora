@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         DB::table("users")->insert([
             [
                 'id' => 3054,
-                'nome' => "Vitor Pereira",
+                'name' => "Vitor Pereira",
                 'email' => 'vini.vptds@gmail.com',
                 'password' => Hash::make('11223344'),
                 'cpf' => '417.105.558-07',

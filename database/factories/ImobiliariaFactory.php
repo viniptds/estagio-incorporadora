@@ -23,7 +23,7 @@ class ImobiliariaFactory extends Factory
     {
         $faker = \Faker\Factory::create('pt_BR');
         return [
-            'nome' => $this->faker->streetName(),
+            'name' => $this->faker->streetName(),
             'razao_social' => $this->faker->company(),
 
             'cnpj' => $faker->cnpj(),

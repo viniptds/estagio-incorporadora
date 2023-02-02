@@ -37,12 +37,12 @@ class AgendamentoController extends Controller
         $agendamentos = Agendamento::where($filters)->get()->all();
 
         $corretores = Corretor::with(['imobiliaria' => function ($query) {
-            $query->orderBy('nome', 'asc');
+            $query->orderBy('name', 'asc');
         }])
-        ->orderBy("nome", 'asc')
+        ->orderBy("name", 'asc')
         ->get();
 
-        $loteamentos = Loteamento::orderBy("nome", 'asc')->get();
+        $loteamentos = Loteamento::orderBy("name", 'asc')->get();
 
         return view("admin.agendamentos.index")->with("agendamentos", $agendamentos)->with("corretores", $corretores)->with("loteamentos", $loteamentos);
     }

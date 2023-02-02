@@ -24,8 +24,8 @@
 
                                     <div class="col-lg-6 col-sm-12">
                                         <div class="form-group">
-                                            <label for="nome">Nome: *</label>
-                                            <input type="text" class="form-control" id="nome" name="nome" value="{{$user->nome}}" required>
+                                            <label for="name">Nome: *</label>
+                                            <input type="text" class="form-control" id="name" name="name" value="{{$user->name}}" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-sm-12">

@@ -23,7 +23,7 @@ var Venda = {
                 // json.user
                 console.table(user);
                 $("#user_id").val(user.id);
-                $("#cliente_nome").html(user.nome);
+                $("#cliente_nome").html(user.name);
             } else {
                 $("#errorResultSearch").html(json.error_message);
                 $("#user_id").val("");
@@ -55,7 +55,7 @@ var Venda = {
                     let newOption = $("<option >");
                     $(newOption).val(item.id);
 
-                    let contentHTML = item.nome + (item.creci ? item.creci : "");
+                    let contentHTML = item.name + (item.creci ? item.creci : "");
                     $(newOption).html(contentHTML);
                     
                     $(corretores).append(newOption);
@@ -98,7 +98,7 @@ var Reserva = {
                 // json.user
                 console.table(user);
                 $("#user_id").val(user.id);
-                $("#cliente_nome").html(user.nome);
+                $("#cliente_nome").html(user.name);
             } else {
                 $("#errorResultSearch").html(json.error_message);
     
@@ -129,7 +129,7 @@ var Reserva = {
                     let newOption = $("<option >");
                     $(newOption).val(item.id);
 
-                    let contentHTML = item.nome + (item.creci ? item.creci : "");
+                    let contentHTML = item.name + (item.creci ? item.creci : "");
                     $(newOption).html(contentHTML);
                     
                     $(corretores).append(newOption);
@@ -145,11 +145,7 @@ var Reserva = {
         .finally(() => {
             $("#corretores_available").attr("disabled", false);
         });
-    
-
     }
-
-
 }
 
 

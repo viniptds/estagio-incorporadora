@@ -67,7 +67,7 @@
                                         <td>{{ $venda->id }}</td>
                                         <td>
                                             <a href="{{route("admin.users.show", [ 'user' => $venda->comprador ])}}">
-                                                {{ $venda->comprador()->first()->nome }}
+                                                {{ $venda->comprador()->first()->name }}
                                             </a>
                                         </td>
                                         <td>
@@ -76,8 +76,8 @@
                                             </a>
                                         </td>
                                         <td>{{ date("d/m/Y H:i:s", strtotime($venda->created_at)) }}</td>
-                                        {{-- <td>{{ $venda->loteamento()->nome ?? "Não definido" }}</td> --}}
-                                        {{-- <td>{{ $venda->lote()->nome ?? "Não definido" }}</td> --}}
+                                        {{-- <td>{{ $venda->loteamento()->name ?? "Não definido" }}</td> --}}
+                                        {{-- <td>{{ $venda->lote()->name ?? "Não definido" }}</td> --}}
                                         {{-- <td>-{{ $venda->status }}</td> --}}
                                         <td>{{numberToMoney($venda->valor) }}</td>
                                         <td>

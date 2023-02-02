@@ -44,7 +44,7 @@
 
                         <tr id="r-{{ $lote->id }}">
                             <td>
-                                {{ $lote->quadra->loteamento->nome }}
+                                {{ $lote->quadra->loteamento->name }}
                             </td>
                             <td>
                                 {{ "Quadra {$lote->quadra->descricao}" }}

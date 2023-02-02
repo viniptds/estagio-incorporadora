@@ -24,7 +24,7 @@ class LoteamentoFactory extends Factory
     {
         $coordenada = Coordenada::factory()->create();
         return [
-            "nome" => $this->faker->company(),
+            "name" => $this->faker->company(),
             "link" => str_replace(" ", "", strtolower($this->faker->text(30))),
             "descricao" => $this->faker->realText(),
             "area" => $this->faker->numberBetween(1, 30000),

@@ -18,7 +18,7 @@
                                 <table class="">
                                     <tr>
                                         <td>Nome:</td>
-                                        <td>{{ $user->nome }}</td>
+                                        <td>{{ $user->name }}</td>
                                     </tr>
                                     <tr>
                                         <td>CPF:</td>
@@ -129,7 +129,7 @@
                                         <tr>
                                             <td>{{ $venda->id }}</td>
                                             <td>{{ date('H:i:s d/m/Y', strtotime($venda->created_at)) }}</td>
-                                            <td><a href="{{route("admin.users.show", [ 'user' => $venda->corretor->id ])}}">{{ $venda->corretor->nome }}</a></td>
+                                            <td><a href="{{route("admin.users.show", [ 'user' => $venda->corretor->id ])}}">{{ $venda->corretor->name }}</a></td>
                                             <td><a href="{{route("admin.lotes.show", [ 'lote' => $venda->lote->id ])}}">{{ $venda->lote->descricao }}</a></td>
                                             <td>{{ $venda->valor }}</td>
                                             <td>

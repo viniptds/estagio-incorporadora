@@ -36,7 +36,7 @@
                                     <tr>
                                         <td>Nome:</td>
                                         <td>
-                                            {{ $loteamento->nome }}
+                                            {{ $loteamento->name }}
                                             <br />
                                             <small>
                                                 Criado em: {{ date('d/m/Y', strtotime($loteamento->created_at)) }}
@@ -78,7 +78,7 @@
                                                                     <div class="col-12">
                                                                         <div class="form-group">
                                                                             <label>Nome:</label>
-                                                                            <input type="text" name="nome" class="form-control" value="{{$loteamento->nome}}" required>
+                                                                            <input type="text" name="name" class="form-control" value="{{$loteamento->name}}" required>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-12">

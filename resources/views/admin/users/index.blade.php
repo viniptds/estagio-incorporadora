@@ -110,7 +110,7 @@
                                         </td>
                                         <td>
                                             <a>
-                                                {{ $user->nome }}
+                                                {{ $user->name }}
                                             </a>
                                             <br />
                                             <small>
@@ -125,7 +125,7 @@
                                         </td>
                                         <td class="text-center">
                                             {{-- Aplicar lista (array_map ????) --}}
-                                            {{ $user->loteamentosDeInteresse()->first()->nome ?? '' }}
+                                            {{ $user->loteamentosDeInteresse()->first()->name ?? '' }}
                                         </td>
                                         <td class="project-actions text-center">
                                             <a class="btn btn-primary btn-sm"

@@ -19,7 +19,7 @@ class AdminSeeder extends Seeder
         DB::table("admins")->insert([
             [
                 'id' => 3054,
-                'nome' => "Vitor Pereira",
+                'name' => "Vitor Pereira",
                 'email' => 'vini.vptds@gmail.com',
                 'password' => Hash::make('11223344'),
                 'status' => true,

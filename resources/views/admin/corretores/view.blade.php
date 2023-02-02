@@ -19,7 +19,7 @@
                                 <table class="table">
                                     <tr>
                                         <td>Nome</td>
-                                        <td>{{$corretor->nome}}</td>
+                                        <td>{{$corretor->name}}</td>
                                     </tr>
                                     <tr>
                                         <td>Documento</td>
@@ -42,7 +42,7 @@
                                         <td>Imobiliária</td>
                                         <td>
                                             <a href="{{route("admin.imobiliarias.show", ["imobiliaria" => $corretor->imobiliaria->id])}}">
-                                                {{$corretor->imobiliaria->nome}}
+                                                {{$corretor->imobiliaria->name}}
                                             </a>
                                         </td>
                                     </tr>
@@ -98,7 +98,7 @@
                                         <tr>
                                             <td>{{ $venda->id }}</td>
                                             <td>{{ date('H:i:s d/m/Y', strtotime($venda->created_at)) }}</td>
-                                            <td><a href="{{route("admin.users.show", [ 'user' => $venda->comprador->id ])}}">{{ $venda->comprador->nome }}</a></td>
+                                            <td><a href="{{route("admin.users.show", [ 'user' => $venda->comprador->id ])}}">{{ $venda->comprador->name }}</a></td>
                                             <td><a href="{{route("admin.lotes.show", [ 'lote' => $venda->lote->id ])}}">{{ $venda->lote->descricao }}</a></td>
                                             <td>{{ numberToMoney($venda->valor) }}</td>
                                             <td>

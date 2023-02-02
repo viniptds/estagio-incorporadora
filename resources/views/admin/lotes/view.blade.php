@@ -58,7 +58,7 @@
                                                 -
                                                 @endif
                                                 @foreach ($lote->atual as $atual_prop)
-                                                - {{ $atual_prop->nome }}<br>
+                                                - {{ $atual_prop->name }}<br>
 
                                                 @endforeach
                                             </td>
@@ -181,7 +181,7 @@
                                                                     <option value="">Não possui</option>
                                                                     @foreach ($imobiliarias as $imobiliaria)
                                                                     <option value="{{$imobiliaria->id}}">
-                                                                        {{$imobiliaria->nome}}</option>
+                                                                        {{$imobiliaria->name}}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
@@ -191,7 +191,7 @@
                                                                     class="form-control">
                                                                     <option value="">Selecione</option>
                                                                     @foreach ($corretores as $corretor)
-                                                                    <option value="{{$corretor->id}}">{{$corretor->nome
+                                                                    <option value="{{$corretor->id}}">{{$corretor->name
                                                                         . ($corretor->creci ? " - " . $corretor->creci :
                                                                         "")}}</option>
                                                                     @endforeach
@@ -238,7 +238,7 @@
                                             <h3>Dados pessoais</h3>
                                             <div class="form-group">
                                                 <label>Nome: *</label>
-                                                <input type="text" name="nome" required class="form-control">
+                                                <input type="text" name="name" required class="form-control">
                                             </div>
                                             <div class="row">
                                                 <div class="col-6">
@@ -362,7 +362,7 @@
                                                         <select id="corretor" name="corretor" required class="form-control">
                                                             <option value="">Selecione</option>
                                                             @foreach ($allCorretores as $corretor)
-                                                            <option value="{{ $corretor->id }}">{{ ($corretor->imobiliaria ? "{$corretor->imobiliaria->nome} - " : "") . "$corretor->nome - $corretor->phone" }}</option>
+                                                            <option value="{{ $corretor->id }}">{{ ($corretor->imobiliaria ? "{$corretor->imobiliaria->name} - " : "") . "$corretor->name - $corretor->phone" }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -474,7 +474,7 @@
                                                 <td>
                                                     <a
                                                         href="{{ route('admin.users.show', ['user' => $agendamento->cliente]) }}">{{
-                                                        $agendamento->cliente->nome }}</a>
+                                                        $agendamento->cliente->name }}</a>
                                                 </td>
                                                 <td>{{ $agendamento->cliente->phone }}</td>
                                                 <td class="text-center"><a
@@ -504,13 +504,13 @@
                                         <tr>
                                             <td>Corretor</td>
                                             <td><i><a href="{{route("admin.corretores.show", [ "corretor"=>
-                                                        $lote->venda->corretor])}}">{{$lote->venda->corretor->nome}}</a></i>
+                                                        $lote->venda->corretor])}}">{{$lote->venda->corretor->name}}</a></i>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Comprador</td>
                                             <td><i><a href="{{route("admin.users.show", [ "user"=>
-                                                        $lote->venda->comprador])}}">{{$lote->venda->comprador->nome}}</a></i>
+                                                        $lote->venda->comprador])}}">{{$lote->venda->comprador->name}}</a></i>
                                             </td>
                                         </tr>
                                         <tr>
@@ -578,7 +578,7 @@
                                         <h3>Informações do proprietário</h3>
                                         <div class="form-group">
                                             <label>Nome:</label>
-                                            <input type="text" name="nome" required class="form-control">
+                                            <input type="text" name="name" required class="form-control">
                                         </div>
                                         <div class="row">
                                             <div class="col-6">
@@ -692,7 +692,7 @@
                                     as $proprietario)
                                     <tr>
                                         {{-- <td>{{ $proprietario->id }}</td> --}}
-                                        <td>{{ $proprietario->nome }}</td>
+                                        <td>{{ $proprietario->name }}</td>
                                         <td>{{ date('d/m/Y', strtotime($proprietario->data_inicio)) }}
                                         </td>
                                         <td>{{ $proprietario->data_fim ? date('d/m/Y',

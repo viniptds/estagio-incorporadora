@@ -53,7 +53,7 @@
                                         <td>
                                             @if($agendamento->loteamento)
                                             <a href="{{route("user.agendamentos.showAgenda", [ 'loteamento' => $agendamento->loteamento->id])}}"> 
-                                                {{  $agendamento->loteamento->nome }}
+                                                {{  $agendamento->loteamento->name }}
                                             </a>
                                             @else 
                                             Não definido
@@ -139,7 +139,7 @@
                             <label>Loteamento:</label>
                             <select name="loteamento" class="">
                                 @foreach ($loteamentos as $loteamento)
-                                <option value="{{$loteamento->id}}">{{ $loteamento->nome }}</option>
+                                <option value="{{$loteamento->id}}">{{ $loteamento->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -149,7 +149,7 @@
                             <label>Quadra/Lote:</label>
                             <select name="loteamento" class="">
                                 @foreach ($loteamentos as $loteamento)
-                                <option value="{{$loteamento->id}}">{{ $loteamento->nome }}</option>
+                                <option value="{{$loteamento->id}}">{{ $loteamento->name }}</option>
                                 @endforeach
                             </select>
                         </div> --}}

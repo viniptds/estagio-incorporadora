@@ -16,7 +16,7 @@ class CreateImobiliariasTable extends Migration
         Schema::create('imobiliarias', function (Blueprint $table) {
             $table->id();
 
-            $table->string("nome", 50);
+            $table->string("name", 50);
             $table->string("razao_social", 200);
             $table->string("cnpj", 18);
             $table->string("creci", 18);

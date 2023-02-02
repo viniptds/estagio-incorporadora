@@ -33,7 +33,7 @@
                                 <b>
                                 <a href="{{route('user.home')}}">Loteamentos</a> / 
                                 <a href="{{route("landing.view", [ "loteamento"=>
-                                        $loteamento->link])}}">{{$loteamento->nome}}</a></b>
+                                        $loteamento->link])}}">{{$loteamento->name}}</a></b>
                                 @if(isset($lote))
                                 / Lote {{ $lote->quadra->descricao . " - " . $lote->id }}
                                 @endif</h3>

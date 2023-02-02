@@ -73,7 +73,7 @@ class UserController extends Controller
 
         $data = $request->all();
 
-        if(empty($data['nome']))
+        if(empty($data['name']))
             $return['message'][] = "Nome precisa ser preenchido";
         elseif(empty($data['cpf']))
             $return['message'][] = "CPF precisa ser preenchido";
@@ -102,7 +102,7 @@ class UserController extends Controller
         else {
             $user = new User();
 
-            $user->nome = $data['nome'];
+            $user->name = $data['name'];
             $user->cpf = $data['cpf'];
             $user->phone = $data['phone'];
             $user->email = $data['email'];
@@ -167,7 +167,7 @@ class UserController extends Controller
         
         $data = $request->all();
 
-        if(empty($data['nome']))
+        if(empty($data['name']))
             $return['message'][] = "Nome precisa ser preenchido";
         elseif(empty($data['cpf']))
             $return['message'][] = "CPF precisa ser preenchido";
@@ -194,7 +194,7 @@ class UserController extends Controller
         elseif(!in_array($data['status'], [User::STATUS_APROVADO, User::STATUS_EMESPERA, User::STATUS_RECUSADO]))
             $return['message'][] = 'Status inválido';
         else {
-            $user->nome = $data['nome'];
+            $user->name = $data['name'];
             $user->cpf = $data['cpf'];
             $user->phone = $data['phone'];
             $user->email = $data['email'];

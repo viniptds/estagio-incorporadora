@@ -120,7 +120,7 @@ class LoteController extends Controller
      */
     public function show(Lote $lote)
     {
-        $allCorretores = Corretor::query()->orderBy('imobiliaria_id')->orderBy('nome')->get();
+        $allCorretores = Corretor::query()->orderBy('imobiliaria_id')->orderBy('name')->get();
 
         $corretores = Corretor::whereNull("imobiliaria_id")->get();
         $imobiliarias = Imobiliaria::has("corretores")->get();

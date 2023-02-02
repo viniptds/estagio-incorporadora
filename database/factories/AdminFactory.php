@@ -25,7 +25,7 @@ class AdminFactory extends Factory
     {
         $faker = \Faker\Factory::create('pt_BR');
         return [
-            'nome' => $this->faker->name(),
+            'name' => $this->faker->name(),
 
             'status' => $this->faker->boolean(),
             'logradouro' => $this->faker->streetAddress(),

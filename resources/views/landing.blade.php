@@ -1,6 +1,6 @@
 @extends("templates.landing")
 
-@section('page_title'){{ $loteamento->nome }} - Participe da Newsletter
+@section('page_title'){{ $loteamento->name }} - Participe da Newsletter
 @endsection
 
 @section("cor_fundo") {{ $loteamento->landingPage->cor_fundo ?? "#e9ecef"}}
@@ -12,7 +12,7 @@
     var LatLanding = {{ $loteamento->coordenada->latitude ?? env('GCP_DEFAULT_LAT') }};
     var LongLanding = {{ $loteamento->coordenada->longitude ?? env('GCP_DEFAULT_LONG') }};
     var ZoomCoord = {{ $loteamento->coordenada->zoom ?? env('GCP_DEFAULT_ZOOM') }};
-    var loteamentoName = "{{ $loteamento->nome}}";
+    var loteamentoName = "{{ $loteamento->name}}";
 </script>
 
 {{-- <section class="content"> --}}
@@ -23,7 +23,7 @@
                 <div class="card">
                     <div class="card-header text-center">
 
-                        <h4>{{ $loteamento->nome }}</h4>
+                        <h4>{{ $loteamento->name }}</h4>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -150,7 +150,7 @@
                             method="post">
                             @csrf
                             <div class="input-group mb-3">
-                                <input type="name" name="nome" class="form-control" placeholder="Nome"
+                                <input type="name" name="name" class="form-control" placeholder="Nome"
                                     required="required">
                                 <div class="input-group-append">
                                     <div class="input-group-text">
@@ -209,7 +209,7 @@
                             method="post">
                             @csrf
                             <div class="input-group mb-3">
-                                <input type="name" name="nome" class="form-control" placeholder="Nome"
+                                <input type="name" name="name" class="form-control" placeholder="Nome"
                                     required="required">
                                 <div class="input-group-append">
                                     <div class="input-group-text">

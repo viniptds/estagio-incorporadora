@@ -9,7 +9,7 @@
 
 <div class="row">
     <div class="col-12">
-        Olá {{$venda->corretor->nome}}, o lote {{ $venda->lote->descricao }} foi vendido por você!
+        Olá {{$venda->corretor->name}}, o lote {{ $venda->lote->descricao }} foi vendido por você!
     </div>
 </div>
 
@@ -25,7 +25,7 @@
             </tr>
             <tr>
                 <td>{{date("d/m/Y H:i:s", strtotime($venda->created_at))}}</td>
-                <td>{{$venda->lote->quadra->loteamento->nome}}</td>
+                <td>{{$venda->lote->quadra->loteamento->name}}</td>
                 <td>{{$venda->lote->quadra->descricao}} / {{$venda->lote->descricao}}</td>
                 <td>{{numberToMoney($venda->lote->valor)}}</td>
             </tr>

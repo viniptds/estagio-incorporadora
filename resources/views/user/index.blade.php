@@ -26,7 +26,7 @@
             <div class="card-header">
                 <h4>
                     <a href="{{route("user.agendamentos.showMap", [
-                    "loteamento" => $loteamento ])}}">{{$loteamento->nome }}</a>
+                    "loteamento" => $loteamento ])}}">{{$loteamento->name }}</a>
                 </h4>
 
             </div>

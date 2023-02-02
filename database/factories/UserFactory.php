@@ -25,7 +25,7 @@ class UserFactory extends Factory
     {
         $faker = \Faker\Factory::create('pt_BR');
         return [
-            'nome' => $this->faker->name(),
+            'name' => $this->faker->name(),
             'phone' => $this->faker->e164PhoneNumber(),
             'cpf' => $faker->cpf(),
             'status' => 'A',

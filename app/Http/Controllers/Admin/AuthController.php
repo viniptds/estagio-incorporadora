@@ -31,7 +31,7 @@ class AuthController extends Controller
             "phone"             => 'required|string',
             "password"          => 'required|string',
         ], [
-            'name' => "nome",
+            'name' => "name",
             'phone' => "celular",
             'password' => "senha",
         ]);

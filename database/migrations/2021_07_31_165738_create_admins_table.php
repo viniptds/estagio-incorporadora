@@ -16,7 +16,7 @@ class CreateAdminsTable extends Migration
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
 
-            $table->string('nome');
+            $table->string('name');
             $table->boolean('status');
 
             // Endereco

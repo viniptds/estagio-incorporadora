@@ -26,7 +26,7 @@ class CorretorFactory extends Factory
         $faker = \Faker\Factory::create('pt_BR');
 
         return [
-            "nome" => $this->faker->name(),
+            "name" => $this->faker->name(),
             "documento" => $faker->cpf(),
             "phone" => $faker->phoneNumber(),
             "email" => $faker->email(),

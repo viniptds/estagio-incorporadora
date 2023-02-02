@@ -72,7 +72,7 @@
                                                 @foreach ($loteamentos as $loteamento)
                                                     <option value="{{ $loteamento->id }}"
                                                         {{ Request::get('filterLoteamento') == $loteamento->id ? 'selected' : '' }}>
-                                                        {{ $loteamento->nome }}</option>
+                                                        {{ $loteamento->name }}</option>
 
                                                 @endforeach
                                             </select>
@@ -164,7 +164,7 @@
                                 <select id="corretor" name="corretor" required class="form-control">
                                     <option value="">Selecione</option>
                                     @foreach ($corretores as $corretor)
-                                    <option value="{{ $corretor->id }}">{{ ($corretor->imobiliaria ? "{$corretor->imobiliaria->nome} - " : "") . "$corretor->nome - $corretor->phone" }}</option>
+                                    <option value="{{ $corretor->id }}">{{ ($corretor->imobiliaria ? "{$corretor->imobiliaria->name} - " : "") . "$corretor->name - $corretor->phone" }}</option>
                                     @endforeach
                                 </select>
                                 <a id="corretor-static"></a>
@@ -239,7 +239,7 @@
         @foreach ($agendamentos as $agendamento)
             ev = {
                 id: '{{ $agendamento->id }}',
-                title : '{{ $agendamento->loteamento->nome . (isset($agendamento->lote) ? " - Lote {$agendamento->lote->id}" :  "")}}',
+                title : '{{ $agendamento->loteamento->name . (isset($agendamento->lote) ? " - Lote {$agendamento->lote->id}" :  "")}}',
                 start : Date.parse("{{ $agendamento->data_inicio }}"),
                 end : Date.parse("{{ $agendamento->data_fim }}"),
                 backgroundColor: colors['{{ $agendamento->status }}'],
@@ -252,13 +252,13 @@
                     lote_id: '{{ $agendamento->lote ? $agendamento->lote->id : 0 }}',
 
                     loteamento_id: '{{ $agendamento->loteamento ? $agendamento->loteamento->id : 0 }}',
-                    loteamento_name: '{{ $agendamento->loteamento ? $agendamento->loteamento->nome : "" }}',
+                    loteamento_name: '{{ $agendamento->loteamento ? $agendamento->loteamento->name : "" }}',
                     
                     corretor_id: '{{ $agendamento->corretor ? $agendamento->corretor->id : 0 }}',
-                    corretor_name: '{{ $agendamento->corretor ? $agendamento->corretor->nome : "" }}',
+                    corretor_name: '{{ $agendamento->corretor ? $agendamento->corretor->name : "" }}',
                     
                     user_id: '{{ $agendamento->user_id ?? 0}}',
-                    user_name: '{{ $agendamento->cliente ? $agendamento->cliente->nome : "" }}',
+                    user_name: '{{ $agendamento->cliente ? $agendamento->cliente->name : "" }}',
                     type: '{{ $agendamento->type }}' // Tipo: reserva ou visita
                     
                 }

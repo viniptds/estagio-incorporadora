@@ -23,21 +23,21 @@
                                     <tr>
                                         <td>Lote:</td>
                                         <td>
-                                            <a href="{{route('admin.lotes.show', ['lote' => $venda->lote])}}">{{ "Loteamento {$venda->lote->quadra->loteamento->nome} / Quadra {$venda->lote->quadra->descricao} / Lote {$venda->lote->descricao}" }}
+                                            <a href="{{route('admin.lotes.show', ['lote' => $venda->lote])}}">{{ "Loteamento {$venda->lote->quadra->loteamento->name} / Quadra {$venda->lote->quadra->descricao} / Lote {$venda->lote->descricao}" }}
                                             </a>
                                             </td>
                                     </tr>
                                     <tr>
                                         <td>Comprador:</td>
                                         <td>
-                                            <a href="{{route('admin.users.show', ['user' => $venda->comprador])}}">{{ "{$venda->comprador->nome} - {$venda->comprador->cpf}" }}
+                                            <a href="{{route('admin.users.show', ['user' => $venda->comprador])}}">{{ "{$venda->comprador->name} - {$venda->comprador->cpf}" }}
                                             </a>
                                             </td>
                                     </tr>
                                     <tr>
                                         <td>Vendedor:</td>
                                         <td>
-                                            <a href="{{route('admin.corretores.show', ['corretor' => $venda->corretor])}}">{{ "{$venda->corretor->nome} - {$venda->corretor->cpf}" }}
+                                            <a href="{{route('admin.corretores.show', ['corretor' => $venda->corretor])}}">{{ "{$venda->corretor->name} - {$venda->corretor->cpf}" }}
                                             </a>
                                         </td>
                                     </tr>

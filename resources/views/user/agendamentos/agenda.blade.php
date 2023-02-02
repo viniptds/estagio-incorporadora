@@ -16,7 +16,7 @@
                     <div class="card m-2">
                         <div class="card-header p-3 m-2">
                             <div class="row">
-                                <h3>Agendar visita em <b><a href="{{route("user.agendamentos.showMap", [ "loteamento" => $loteamento->id])}}">{{$loteamento->nome}}</a></b>
+                                <h3>Agendar visita em <b><a href="{{route("user.agendamentos.showMap", [ "loteamento" => $loteamento->id])}}">{{$loteamento->name}}</a></b>
                                 @if(isset($lote))
                                 / {{ "Quadra {$lote->quadra->descricao} - Lote {$lote->descricao}" }}
                                 @endif</h3>
@@ -130,7 +130,7 @@
         @foreach ($agendamentos as $agendamento)
         // console.log(JSON.parse('{{$agendamento}}'));
             ev = {
-            title : ' {{ $agendamento->cliente->id == Auth::id() ? "Visita  - " . $agendamento->loteamento->nome . (isset($agendamento->lote) ? " - Lote {$agendamento->lote->id}" : "") : "Data reservada" }}',
+            title : ' {{ $agendamento->cliente->id == Auth::id() ? "Visita  - " . $agendamento->loteamento->name . (isset($agendamento->lote) ? " - Lote {$agendamento->lote->id}" : "") : "Data reservada" }}',
             start : Date.parse("{{ $agendamento->data_inicio }}"),
             end : Date.parse("{{ $agendamento->data_fim }}"),
             backgroundColor:  coresAgendamentos["{{ $agendamento->type == 'R' || $agendamento->cliente->id != Auth::id() ? '_' : $agendamento->status }}"],

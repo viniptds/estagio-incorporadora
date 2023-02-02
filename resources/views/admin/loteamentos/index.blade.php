@@ -41,7 +41,7 @@
 
                             <div class="form-group">
                                 <label>Nome:</label>
-                                <input type="text" name="nome" class="form-control" required>
+                                <input type="text" name="name" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Link:</label>
@@ -101,7 +101,7 @@
                             </td>
                             <td>
                                 <a>
-                                    {{ $loteamento->nome }}
+                                    {{ $loteamento->name }}
                                 </a>
                                 <br />
                                 <small>

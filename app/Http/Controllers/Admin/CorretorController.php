@@ -50,7 +50,7 @@ class CorretorController extends Controller
         ];
 
         $request->validate([
-            'nome' => 'required',
+            'name' => 'required',
             'cpf'     => 'required',
             'celular'     => 'required'
         ]);
@@ -81,7 +81,7 @@ class CorretorController extends Controller
 
             $corretor = new Corretor();
 
-            $corretor->nome = $data['nome'];
+            $corretor->name = $data['name'];
             $corretor->cpf = $data['cpf'];
             $corretor->taxa_venda_porcentagem = $data['taxa_venda_porcentagem'] ?? 0;
             $corretor->taxa_venda_valor = $data['taxa_venda_valor'] ?? 0;
@@ -150,8 +150,8 @@ class CorretorController extends Controller
         $taxaValor = $data['taxa_valor'];
         $fotoPerfil = $request->file('profile');
 
-        if(empty($data['nome']))
-            $return['message'][] = "Nome precisa ser preenchido";
+        if(empty($data['name']))
+            $return['message'][] = "Name precisa ser preenchido";
         elseif(empty($data['cpf']))
             $return['message'][] = "CPF precisa ser preenchido";
         elseif(Corretor::where("cpf", $data['cpf'])->where('id', '!=', $corretor->id)->count())
@@ -170,7 +170,7 @@ class CorretorController extends Controller
             $return['message'][] = 'Valor de taxa é inválido';
         }
         else {
-            $corretor->nome = $data['nome'];
+            $corretor->name = $data['name'];
             $corretor->cpf = $data['cpf'];
             $corretor->phone = $data['phone'];
             $corretor->email = $data['email'];

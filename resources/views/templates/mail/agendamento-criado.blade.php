@@ -9,7 +9,7 @@
 
 <div class="row">
     <div class="col-12">
-        Olá {{$user->nome}}, um novo agendamento foi criado em sua conta!
+        Olá {{$user->name}}, um novo agendamento foi criado em sua conta!
     </div>
 </div>
 
@@ -27,7 +27,7 @@
             </tr>
             <tr>
                 <td>{{date("d/m/Y H:i:s", strtotime($agendamento->data_inicio))}}</td>
-                <td>{{$agendamento->loteamento->nome}}</td>
+                <td>{{$agendamento->loteamento->name}}</td>
                 @if($agendamento->lote)
                     <td>{{$agendamento->lote->quadra->descricao}}</td>
                     <td>{{$agendamento->lote->descricao}}</td>

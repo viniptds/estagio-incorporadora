@@ -104,7 +104,7 @@ class VendaController extends Controller
             $proprietario->data_inicio = $venda->created_at;
 
             $proprietario->documento = $user->cpf;
-            $proprietario->nome = $user->nome;
+            $proprietario->name = $user->name;
             $proprietario->email = $user->email;
             $proprietario->phone = $user->phone;
             $proprietario->logradouro = $user->logradouro;

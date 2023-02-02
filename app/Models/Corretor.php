@@ -18,7 +18,7 @@ class Corretor extends Model
     }
 
     protected $fillable = [
-        'nome', 
+        'name', 
         'cpf', 
         'phone', 
         'email',
