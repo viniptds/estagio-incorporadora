@@ -63,7 +63,7 @@ Route::middleware('auth:admin')->group(function () {
 
             Route::post("{loteamento}/landing/update", [\App\Http\Controllers\Admin\LoteamentoController::class, 'updateLandingPage'])->name("admin.loteamentos.editLandingLayout");
             Route::post("{loteamento}/landing/uploadFile", [\App\Http\Controllers\Admin\LoteamentoController::class, 'uploadFile'])->name("admin.loteamentos.uploadFile");
-            Route::get("{loteamento}/landing/uploadFile", [\App\Http\Controllers\Admin\LoteamentoController::class, 'uploadFile'])->name("admin.loteamentos.uploadFile");
+            // Route::get("{loteamento}/landing/uploadFile", [\App\Http\Controllers\Admin\LoteamentoController::class, 'uploadFile'])->name("admin.loteamentos.uploadFile");
             
         });
 
@@ -225,7 +225,7 @@ Route::prefix("user")->group(function(){
         });
 
         Route::prefix("loteamentos")->group(function() {
-            Route::get("{loteamento}", [\App\Http\Controllers\User\LoteamentoController::class, "show"])->name("user.loteamentos.show");
+            Route::get("{loteamento}", [\App\Http\Controllers\LoteamentoController::class, "show"])->name("user.loteamentos.show");
         });
         
     
