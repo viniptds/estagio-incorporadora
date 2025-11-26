@@ -28,18 +28,6 @@ RUN chown -R unit:unit /var/www/html/storage /var/www/html/bootstrap/cache \
 
 RUN composer install --prefer-dist --optimize-autoloader --no-interaction
 
-
-# Install Node and dependencies
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
-    && apt-get install -y nodejs \
-    && npm install -g npm
-
-
-COPY package*.json ./
-RUN npm install
-
-RUN npm run build
-
 RUN php artisan optimize:clear && php artisan config:clear && php artisan route:clear && php artisan view:clear && php artisan optimize \ 
 && chown -R unit:unit /var/www/html/storage /var/www/html/bootstrap/cache && php artisan storage:link
 
