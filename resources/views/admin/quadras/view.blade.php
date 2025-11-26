@@ -310,7 +310,7 @@
     <script src="{{ url("template/assets/js/jsts.min.js") }}"></script>
     <script src="{{ url('js/map.js') }}"></script>
     <script src="{{ url('js/quadras/view.js') }}"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('GCP_MAPS_API', '') }}&callback=initMap&libraries=drawing"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('GCP_MAPS_API', '') }}&callback=initMap&libraries=marker"></script>
 
     <script>
         $('form').on('submit', function(e) {

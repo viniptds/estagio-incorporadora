@@ -5,7 +5,7 @@
 @section("content")
 
 
-<section class="content">
+<section class="content nav-link">
 
 {{-- Disparar modal fixo para preencher dados pessoais se for primeiro acesso --}}
 @if(Auth::user()->status == 'A')

@@ -114,18 +114,17 @@
                                 </a>
                             </td>
                             <td class="text-center">
-                                <span class="badge badge-primary">
+                                <span class="badge badge-primary p-3">
                                     {{ $loteamento->lotes()->count() }}
                                 </span>
                             </td>
                             <td class="text-center">
-                                <span class="badge badge-success">
+                                <span class="badge badge-success p-3">
                                     {{ $loteamento->lotes()->where('status', 'L')->count() }}
                                 </span>
                             </td>
                             <td class="text-center">
-                                <span class="badge badge-warning">
-                                    
+                                <span class="badge badge-warning p-3">
                                     {{ $loteamento->interessados()->count() }}
                                 </span>
                             </td>
@@ -134,13 +133,18 @@
 
                                     <a class="btn btn-primary btn-sm"
                                     href="{{ route('admin.loteamentos.show', ['loteamento' => $loteamento]) }}">
-                                        <i class="fas fa-eye"></i> Ver
+                                        <i class="fas fa-eye"></i> Detalhes
                                     </a>
-                                    <a class="btn btn-info btn-sm" href="{{route('admin.loteamentos.edit', ['loteamento' => $loteamento->id])}}">
+                                    {{-- Abrir link em nova guia --}}
+                                    <a class="btn btn-info btn-sm"
+                                    href="{{ env('APP_URL') }}/{{ $loteamento->link }}" target="_blank">
+                                        <i class="fas fa-link"></i> Link
+                                    </a>
+                                    {{-- <a class="btn btn-info btn-sm" href="{{route('admin.loteamentos.edit', ['loteamento' => $loteamento->id])}}">
                                         <i class="fas fa-pencil-alt">
                                         </i>
                                         Editar
-                                    </a>
+                                    </a> --}}
                                     {{-- <a class="btn btn-danger btn-sm" href="#">
                                         <i class="fas fa-trash"></i> Delete
                                     </a> --}}

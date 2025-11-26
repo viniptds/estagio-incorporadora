@@ -16,6 +16,7 @@
     <!-- overlayScrollbars -->
     {{-- <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css"> --}}
 
+    <link rel="icon" href="{{ url("favicon.ico") }}" type="image/x-icon" />
     @yield("css")
 
     @if(env("GCP_MAPS_ENABLED", 0))
@@ -81,15 +82,19 @@
                 {{-- </li> --}}
 
                 <!-- Messages Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="{{route("admin.users.all", ['filterStatus' => User::STATUS_EMESPERA])}}" title="Contas Pendentes">
+                <li class="nav-item ">
+                    <a class="nav-link" 
+                    {{-- data-toggle="dropdown" --}}
+                     href="{{route("admin.users.all", ['filterStatus' => User::STATUS_EMESPERA])}}" title="Contas Pendentes">
                         <i class="fas fa-user-circle"></i>
                         <span class="badge badge-warning navbar-badge">{{$contas_pendentes}}</span>
                     </a>
                 </li>
                 <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="{{route('admin.agendamentos.all', [ "filterStatus"=> Agendamento::STATUS_EMESPERA, "filterType" => Agendamento::TYPE_VISITA])}}" title="Agendamentos Pendentes">
+                <li class="nav-item ">
+                    <a class="nav-link" 
+                    {{-- data-toggle="dropdown" --}}
+                     href="{{route('admin.agendamentos.all', [ "filterStatus"=> Agendamento::STATUS_EMESPERA, "filterType" => Agendamento::TYPE_VISITA])}}" title="Agendamentos Pendentes">
                         <i class="far fa-calendar"></i>
                         <span class="badge badge-warning navbar-badge">{{$agendamentos_pendentes}}</span>
                     </a>

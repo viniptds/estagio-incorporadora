@@ -46,6 +46,7 @@ class LoteamentoController extends Controller
      */
     public function show(Loteamento $loteamento)
     {
+        $loteamento->load('landingPage');
         return view("landing")->with("loteamento", $loteamento);
     }
 

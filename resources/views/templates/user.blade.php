@@ -16,6 +16,7 @@
     <!-- overlayScrollbars -->
     {{-- <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css"> --}}
 
+    <link rel="icon" href="{{ url("favicon.ico") }}" type="image/x-icon" />
     @yield("css")
 </head>
 
@@ -26,8 +27,8 @@
         {{-- <nav class="main-header navbar navbar-expand navbar-white navbar-light"> --}}
         <nav class="navbar-expand navbar-white navbar-light display-flex">
             <!-- Left navbar links -->
-            <ul class="navbar-nav align-items-center">
-
+            <ul class="navbar-nav align-items-center justify-content-between p-2">
+                
                 <li class="nav-item">
                     <a href="{{route("user.home")}}" class="brand-link">
                         <img src="{{ url("template/assets/img/AdminLTELogo.png") }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
@@ -40,10 +41,10 @@
                 {{-- <li class="nav-item d-none d-sm-inline-block">
                     <a href="" class="nav-link">Contact</a>
                 </li> --}}
-            </ul>
+            {{-- </ul>
 
             <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto"> --}}
 
                 <!-- Messages Dropdown Menu -->
                 {{-- <li class="nav-item dropdown">
@@ -53,23 +54,27 @@
                     </a>
                     
                 </li> --}}
-                <li class="nav-item">
-                    <a href="{{route("user.home")}}" class="nav-link">Home</a>
+                <li class="nav-item d-none d-sm-inline-block">
                 </li>
-                @if(Auth::user()->status == User::STATUS_APROVADO)
-                <li class="nav-item">
-                    <a href="{{route("user.agendamentos")}}" class="nav-link">Meus Agendamentos</a>
-                </li>
-                @endif
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{route("user.profile")}}">{{Auth::user()->nome}}</a>
+                <li class="nav-item d-none d-sm-inline-block">
                     
                 </li>
-                <li class="nav-item">
+                <li class="nav-item d-none d-sm-flex ">
+                    @if(Auth::user()->status == User::STATUS_APROVADO)
+                    <a href="{{route("user.agendamentos")}}" class="nav-link">Meus Agendamentos</a>
+                    @endif
+                    <a class="nav-link" href="{{route("user.profile")}}">{{Auth::user()->nome}}</a>
                     <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="{{route("user.auth.logout")}}" role="button">
                         <i class="fas fa-sign-out-alt"></i>
                     </a>
                 </li>
+                <div class="d-block d-sm-none">
+                    <li class="nav-item">
+                        <button class="nav-link" style="btn" data-widget="pushmenu" type="button" role="button">
+                            <i class="fa-solid fa-bars"></i>
+                        </button>
+                    </li>
+                </div>
             </ul>
         </nav>
         <!-- /.navbar -->

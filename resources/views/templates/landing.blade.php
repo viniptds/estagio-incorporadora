@@ -16,6 +16,8 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ url('template/assets/adminlte.css') }}">
 
+    <link rel="icon" href="{{ url("favicon.ico") }}" type="image/x-icon" />
+
     @if(env("GCP_MAPS_ENABLED", 0))
     <style>
         #map {

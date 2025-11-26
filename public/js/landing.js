@@ -2,10 +2,11 @@ window.initMap = function() {
     // JS API is loaded and available
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: LatLanding, lng: LongLanding},
-        zoom: ZoomCoord
+        zoom: ZoomCoord,
+        mapId: 'MAP',
     });
 
-    const marker = new google.maps.Marker({
+    const marker = new google.maps.marker.AdvancedMarkerElement({
         position: {
             lat: LatLanding,
             lng: LongLanding

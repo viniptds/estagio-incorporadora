@@ -33,6 +33,6 @@ class AdminSeeder extends Seeder
 
             ]
         ]);
-        \App\Models\Loteamento::factory(3)->create();
+        // \App\Models\Loteamento::factory(3)->create();
     }
 }

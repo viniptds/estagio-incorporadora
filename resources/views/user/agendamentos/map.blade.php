@@ -221,7 +221,7 @@
 
 <script src="{{ url('js/agendamentos/map.js') }}"></script>
 <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key={{ env('GCP_MAPS_API', '') }}&callback=initMap&libraries=drawing">
+    src="https://maps.googleapis.com/maps/api/js?key={{ env('GCP_MAPS_API', '') }}&callback=initMap&libraries=marker">
 </script>
 
 @endsection

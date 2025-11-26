@@ -15,6 +15,10 @@ class LoteamentoSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Loteamento::factory(3)->create();
+        $loteamentos = \App\Models\Loteamento::factory(3)->create();
+
+        foreach ($loteamentos as $lt) {
+            \App\Models\LandingPage::factory()->create(['loteamento_id' => $lt->id]);
+        }
     }
 }

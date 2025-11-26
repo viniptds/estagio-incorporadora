@@ -21,9 +21,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
+        'nome',
         'email',
         'password',
+        'status',
+        'is_new',
+        'phone',
+        'cpf'
     ];
 
     /**
@@ -45,19 +49,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function lotesDeInteresse(){
+    public function lotesDeInteresse()
+    {
         return $this->belongsToMany(Lote::class, "newsletter_lote_users", "user_id", "lote_id");
     }
 
-    public function loteamentosDeInteresse(){
+    public function loteamentosDeInteresse()
+    {
         return $this->belongsToMany(Loteamento::class, "newsletter_loteamento_users", "user_id", "loteamento_id");
     }
 
-    public function agendamentos(){
+    public function agendamentos()
+    {
         return $this->hasMany(Agendamento::class);
     }
 
-    public function compras() {
+    public function compras()
+    {
         return $this->hasMany(Venda::class, 'user_id');
     }
 }

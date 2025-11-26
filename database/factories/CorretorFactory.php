@@ -27,7 +27,7 @@ class CorretorFactory extends Factory
 
         return [
             "nome" => $this->faker->name(),
-            "documento" => $faker->cpf(),
+            "cpf" => $faker->cpf(),
             "phone" => $faker->phoneNumber(),
             "email" => $faker->email(),
             "taxa_venda_porcentagem" => $this->faker->randomFloat(3, null, 100),

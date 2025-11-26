@@ -29,19 +29,23 @@ class UserController extends Controller
         $users = User::query();
 
         $statusFilter = trim($request->get("filterStatus", ""));
-        if(!empty($statusFilter)){
-            if(!in_array($statusFilter, [User::STATUS_APROVADO, User::STATUS_EMESPERA, User::STATUS_RECUSADO])){
+        if (!empty($statusFilter)) {
+            if (!in_array($statusFilter, [User::STATUS_APROVADO, User::STATUS_EMESPERA, User::STATUS_RECUSADO])) {
                 $return['success'] = false;
                 $return['message'] = 'Status inválido';
-            } else{
+            } else {
                 $users = $users->where('status', $statusFilter);
             }
         }
 
-        $emailFilter = trim($request->get("filterEmail", ""));
-        if(!empty($emailFilter)){
-            $users = $users->where('email', 'like', '%'. $emailFilter . '%');
+        $searchFilter = trim($request->get("filterSearch", ""));
+        if (!empty($searchFilter)) {
+            $users = $users->where(function ($q) use ($searchFilter) {
+                $q->where('email', 'like', '%' . $searchFilter . '%')
+                ->orWhere('nome', 'like', '%'. $searchFilter. '%');
+            });
         }
+
         $users = $users->orderBy('created_at', 'desc')->get();
         // die($users->toSql());
 
@@ -73,31 +77,31 @@ class UserController extends Controller
 
         $data = $request->all();
 
-        if(empty($data['nome']))
+        if (empty($data['nome']))
             $return['message'][] = "Nome precisa ser preenchido";
-        elseif(empty($data['cpf']))
+        elseif (empty($data['cpf']))
             $return['message'][] = "CPF precisa ser preenchido";
-        elseif(User::where("cpf", $data['cpf'])->where('id', '!=', $user->id)->count())
+        elseif (User::where("cpf", $data['cpf'])->where('id', '!=', $user->id)->count())
             $return['message'][] = 'CPF já cadastrado na base';
-        elseif(empty($data['phone']))
+        elseif (empty($data['phone']))
             $return['message'][] = "Celular precisa ser preenchido";
-        elseif(empty($data['email']))
+        elseif (empty($data['email']))
             $return['message'][] = "Email precisa ser preenchido";
-        elseif(User::where("email", $data['email'])->where('id', '!=', $user->id)->count())
+        elseif (User::where("email", $data['email'])->where('id', '!=', $user->id)->count())
             $return['message'][] = 'Email já cadastrado na base';
-        elseif(empty($data['cep']))
+        elseif (empty($data['cep']))
             $return['message'][] = 'CEP precisa ser preenchido';
-        elseif(empty($data['logradouro']))
+        elseif (empty($data['logradouro']))
             $return['message'][] = 'Logradouro precisa ser preenchido';
-        elseif(empty($data['bairro']))
+        elseif (empty($data['bairro']))
             $return['message'][] = 'Bairro precisa ser preenchido';
-        elseif(empty($data['cidade']))
+        elseif (empty($data['cidade']))
             $return['message'][] = 'Cidade precisa ser preenchida';
-        elseif(empty($data['uf']))
+        elseif (empty($data['uf']))
             $return['message'][] = 'UF precisa ser preenchida';
-        elseif(empty($data['status']))
+        elseif (empty($data['status']))
             $return['message'][] = 'Status precisa ser enviado';
-        elseif(!in_array($data['status'], [User::STATUS_APROVADO, User::STATUS_EMESPERA, User::STATUS_RECUSADO]))
+        elseif (!in_array($data['status'], [User::STATUS_APROVADO, User::STATUS_EMESPERA, User::STATUS_RECUSADO]))
             $return['message'][] = 'Status inválido';
         else {
             $user = new User();
@@ -167,31 +171,31 @@ class UserController extends Controller
         
         $data = $request->all();
 
-        if(empty($data['nome']))
+        if (empty($data['nome']))
             $return['message'][] = "Nome precisa ser preenchido";
-        elseif(empty($data['cpf']))
+        elseif (empty($data['cpf']))
             $return['message'][] = "CPF precisa ser preenchido";
-        elseif(User::where("cpf", $data['cpf'])->where('id', '!=', $user->id)->count())
+        elseif (User::where("cpf", $data['cpf'])->where('id', '!=', $user->id)->count())
             $return['message'][] = 'CPF já cadastrado na base';
-        elseif(empty($data['phone']))
+        elseif (empty($data['phone']))
             $return['message'][] = "Celular precisa ser preenchido";
-        elseif(empty($data['email']))
+        elseif (empty($data['email']))
             $return['message'][] = "Email precisa ser preenchido";
-        elseif(User::where("email", $data['email'])->where('id', '!=', $user->id)->count())
+        elseif (User::where("email", $data['email'])->where('id', '!=', $user->id)->count())
             $return['message'][] = 'Email já cadastrado na base';
-        elseif(empty($data['cep']))
+        elseif (empty($data['cep']))
             $return['message'][] = 'CEP precisa ser preenchido';
-        elseif(empty($data['logradouro']))
+        elseif (empty($data['logradouro']))
             $return['message'][] = 'Logradouro precisa ser preenchido';
-        elseif(empty($data['bairro']))
+        elseif (empty($data['bairro']))
             $return['message'][] = 'Bairro precisa ser preenchido';
-        elseif(empty($data['cidade']))
+        elseif (empty($data['cidade']))
             $return['message'][] = 'Cidade precisa ser preenchida';
-        elseif(empty($data['uf']))
+        elseif (empty($data['uf']))
             $return['message'][] = 'UF precisa ser preenchida';
-        elseif(empty($data['status']))
+        elseif (empty($data['status']))
             $return['message'][] = 'Status precisa ser enviado';
-        elseif(!in_array($data['status'], [User::STATUS_APROVADO, User::STATUS_EMESPERA, User::STATUS_RECUSADO]))
+        elseif (!in_array($data['status'], [User::STATUS_APROVADO, User::STATUS_EMESPERA, User::STATUS_RECUSADO]))
             $return['message'][] = 'Status inválido';
         else {
             $user->nome = $data['nome'];
@@ -231,14 +235,13 @@ class UserController extends Controller
         //
     }
 
-    public function aprovar(User $user){
-
-        if($user->status == User::STATUS_EMESPERA){
+    public function aprovar(User $user)
+    {
+        if ($user->status == User::STATUS_EMESPERA) {
             
             // Define status de aprovado
             $user->status = User::STATUS_APROVADO;
             $user->save();
-
 
             return back()->with("success", "Conta aprovada!");
         } else {
@@ -246,9 +249,9 @@ class UserController extends Controller
         }
     }
     
-    public function recusar(User $user){
-
-        if($user->status == User::STATUS_EMESPERA){
+    public function recusar(User $user)
+    {
+        if ($user->status == User::STATUS_EMESPERA) {
             
             // Define status de aprovado
             $user->status = User::STATUS_RECUSADO;

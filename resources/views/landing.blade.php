@@ -268,7 +268,8 @@
     {{--
 </section> --}}
 <script src="{{ url('js/landing.js') }}"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('GCP_MAPS_API', '') }}&callback=initMap">
+<script async 
+src="https://maps.googleapis.com/maps/api/js?key={{ env('GCP_MAPS_API', '') }}&callback=initMap&libraries=maps,marker&loading=async">
 </script>
 @endsection
 @section('js')

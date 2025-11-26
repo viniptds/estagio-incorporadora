@@ -24,7 +24,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Filtros</h4>
+                        <h4>Usuários</h4>
                     </div>
                     <div class="card-body">
 
@@ -46,8 +46,8 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="text" name="filterEmail" class="form-control" value='{{ Request::get('filterEmail') ?? '' }}'>
+                                        <label>Busca</label>
+                                        <input type="text" name="filterSearch" placeholder="Nome ou email" class="form-control" value='{{ Request::get('filterSearch') ?? '' }}'>
                                     </div>
                                 </div>
                                 <div class="col-6">

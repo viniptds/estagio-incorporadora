@@ -3,24 +3,25 @@ window.initMap = function () {
     var map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: LatLanding, lng: LongLanding },
         zoom: ZoomLanding,
+        mapId: 'MAP',
         // zoomControl: false,
         // mapTypeControl: false,
         streetViewControl: false
     });
 
 
-    const drawingManager = new google.maps.drawing.DrawingManager({
-        drawingControl: true,
-        drawingControlOptions: {
-            position: google.maps.ControlPosition.TOP_CENTER,
-            drawingModes: [
-                google.maps.drawing.OverlayType.POLYGON,
-                // google.maps.drawing.OverlayType.POLYLINE,
-            ],
-        },
-    });
+    // const drawingManager = new google.maps.drawing.DrawingManager({
+    //     drawingControl: true,
+    //     drawingControlOptions: {
+    //         position: google.maps.ControlPosition.TOP_CENTER,
+    //         drawingModes: [
+    //             google.maps.drawing.OverlayType.POLYGON,
+    //             // google.maps.drawing.OverlayType.POLYLINE,
+    //         ],
+    //     },
+    // });
 
-    drawingManager.setMap(map);
+    // drawingManager.setMap(map);
 
     loteamentoQuadras.forEach((quadra) => {
         // console.log(quadra);
@@ -46,40 +47,40 @@ window.initMap = function () {
         quadrasPolygons.push(quadraPolygon);
     })
 
-    google.maps.event.addListener(drawingManager, 'overlaycomplete', function (event) {
-        let success = false;
-        let quadraLatLngs = event.overlay.getPath().getArray();
-        let novaQuadraCoords = [];
-        novaQuadra = event.overlay;
+    // google.maps.event.addListener(drawingManager, 'overlaycomplete', function (event) {
+    //     let success = false;
+    //     let quadraLatLngs = event.overlay.getPath().getArray();
+    //     let novaQuadraCoords = [];
+    //     novaQuadra = event.overlay;
         
-        if(quadraLatLngs.length < 3){
-            alert("Forma não é um polígono");
-        } else {
-            let filterInterpolation = quadrasPolygons.filter(quadra =>  isPolygonOverlap(novaQuadra, quadra)
-            );
-            if(filterInterpolation.length)
-                alert("A nova quadra está colidindo com outra(s)!");
-            else
-                success = true;
-        }
+    //     if(quadraLatLngs.length < 3){
+    //         alert("Forma não é um polígono");
+    //     } else {
+    //         let filterInterpolation = quadrasPolygons.filter(quadra =>  isPolygonOverlap(novaQuadra, quadra)
+    //         );
+    //         if(filterInterpolation.length)
+    //             alert("A nova quadra está colidindo com outra(s)!");
+    //         else
+    //             success = true;
+    //     }
 
-        if(success){
-            quadraLatLngs.forEach((item, i) => {
-                let curr_quadra_coords = {
-                    lat: item.lat(),
-                    lng: item.lng()
-                };
-                novaQuadraCoords.push(curr_quadra_coords);
-            })
-            // console.log(currentCoords);
-            criarCoords(novaQuadraCoords);
-            $("#add_method").val("map");
-            $("#modal-add-quadra").modal("show");
-        } else {
-            novaQuadra.setMap(null);
-        }
+    //     if(success){
+    //         quadraLatLngs.forEach((item, i) => {
+    //             let curr_quadra_coords = {
+    //                 lat: item.lat(),
+    //                 lng: item.lng()
+    //             };
+    //             novaQuadraCoords.push(curr_quadra_coords);
+    //         })
+    //         // console.log(currentCoords);
+    //         criarCoords(novaQuadraCoords);
+    //         $("#add_method").val("map");
+    //         $("#modal-add-quadra").modal("show");
+    //     } else {
+    //         novaQuadra.setMap(null);
+    //     }
         
-    });
+    // });
 
     // 
     // Salvando ponto central do loteamento
@@ -94,11 +95,13 @@ window.initMap = function () {
     centralMarker = addMarker(coords);
 
 
+    // Deprecated
     function addMarker(coords) {
-        const marker = new google.maps.Marker({
+        const marker = new google.maps.marker.AdvancedMarkerElement({
             position: coords,
             map: map,
-            draggable: true
+            // draggable: true,
+            gmpDraggable: true,
         });
         return marker
     }
@@ -108,7 +111,7 @@ window.initMap = function () {
     let txtLongitude = document.getElementById("txtLongitude");
     let txtZoom = document.getElementById("txtZoom");
 
-    centralMarker.addListener("dragend", function(e){
+    centralMarker?.addListener("dragend", function(e){
         coords = {
             lat: e.latLng.lat(),
             lng: e.latLng.lng()
