@@ -158,7 +158,7 @@ Route::middleware('auth:admin')->group(function () {
         Route::prefix("agendamentos")->group(function() {
             Route::get("/", [App\Http\Controllers\Admin\AgendamentoController::class, "all"])->name("admin.agendamentos.all");
             Route::get("{agendamento}", [App\Http\Controllers\Admin\AgendamentoController::class, "show"])->name("admin.agendamentos.show");
-            Route::post("/", [App\Http\Controllers\Admin\AgendamentoController::class, "all"])->name("admin.agendamentos.all");
+            Route::post("/", [App\Http\Controllers\Admin\AgendamentoController::class, "all"])->name("admin.agendamentos.create");
             Route::post("/{agendamento}/changeStatus", [App\Http\Controllers\Admin\AgendamentoController::class, "changeStatus"])->name("admin.agendamentos.changeStatus");
             Route::post("/{agendamento}/setCorretor/{id_corretor}", [App\Http\Controllers\Admin\AgendamentoController::class, "setCorretor"])->name("admin.agendamentos.setCorretor");
             Route::post("update/{agendamento}", [App\Http\Controllers\Admin\AgendamentoController::class, "update"])->name("admin.agendamentos.update");
